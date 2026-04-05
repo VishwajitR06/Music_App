@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Recommender</title>
+</head>
+<body>
+    <h1>Music Recommendation System</h1>
+    <form method="POST">
+        <label for="genre">Select Genre:</label>
+        <select name="genre">
+            <option value="">--Any--</option>
+            {% for genre in genres %}
+                <option value="{{ genre }}">{{ genre }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="artist">Select Artist:</label>
+        <select name="artist">
+            <option value="">--Any--</option>
+            {% for artist in artists %}
+                <option value="{{ artist }}">{{ artist }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Suggest Songs</button>
+    </form>
+
+    {% if songs %}
+    <h2>Recommended Songs:</h2>
+    <ul>
+        {% for song in songs %}
+            <li>{{ song["Song"] }} by {{ song["Artist"] }} ({{ song["Genre"] }})</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
